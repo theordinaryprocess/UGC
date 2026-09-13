@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cloé — UGC & content production in Seoul, South Korea · The Ordinary Process</title>
+<meta name="description" content="French creative based in Seoul. Campaign-ready UGC and social video for tech, beauty, hospitality and lifestyle brands. Available for UGC production in South Korea.">
+<meta property="og:title" content="Cloé — Content made in Seoul. Built for brands everywhere.">
+<meta property="og:description" content="French creative based in South Korea. Campaign-ready video for tech, beauty, hospitality and lifestyle brands.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F6F5F1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
+
+<header class="nav" id="nav">
+  <a class="nav__name" href="#top" aria-label="The Ordinary Process, back to top">The Ordinary Process</a>
+  <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu"><span></span><span></span></button>
+  <nav class="nav__menu" id="navMenu" aria-label="Site">
+    <a href="#work">Work</a>
+    <a href="#industries">Industries</a>
+    <a href="#korea">Korea</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact" class="nav__cta">Start a project</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero__text">
+      <p class="hero__where">Seoul, South Korea</p>
+      <h1 class="hero__title"><span class="reveal" id="heroLine1"></span><span class="reveal reveal--2" id="heroLine2"></span></h1>
+      <p class="hero__positioning reveal reveal--3" id="heroPositioning"></p>
+      <div class="hero__actions reveal reveal--3">
+        <a class="btn btn--primary" href="#work">View selected work</a>
+        <a class="btn btn--ghost" href="#contact">Start a project</a>
+      </div>
+    </div>
+    <div class="hero__media" id="heroMedia"></div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section class="work" id="work">
+    <div class="section__head">
+      <h2 class="section__title">Selected work</h2>
+      <p class="section__lede">Each piece is a small campaign: an objective, a format, deliverables — and the video, playable here.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter work by industry"></div>
+    <div class="work__grid" id="workGrid"></div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <h2 class="section__title">Where I work best</h2>
+    <div class="industries__grid">
+      <article class="industry">
+        <h3>Tech</h3>
+        <p>Apps, AI, SaaS, consumer electronics, product launches.</p>
+        <ul><li>Product demo</li><li>Problem / solution</li><li>App walkthrough</li><li>Founder-style ad</li><li>Aesthetic product film</li></ul>
+      </article>
+      <article class="industry">
+        <h3>Beauty</h3>
+        <p>Skincare, cosmetics, wellness, dermatology.</p>
+        <ul><li>Skincare routine</li><li>Texture / ASMR</li><li>Before / after</li><li>Testimonial</li><li>Clinic experience</li></ul>
+      </article>
+      <article class="industry">
+        <h3>Hospitality</h3>
+        <p>Hotels, resorts, restaurants, travel.</p>
+        <ul><li>Hotel experience</li><li>Room tour</li><li>Travel story</li><li>Restaurant / F&amp;B</li><li>Voiceover review</li></ul>
+      </article>
+      <article class="industry industry--korea">
+        <h3>Korea</h3>
+        <p>Aesthetic clinics, K-beauty, Korean lifestyle, international campaigns produced locally.</p>
+        <ul><li>English-language creative for Korean brands</li><li>Local production for brands entering Korea</li><li>Clinic and hotel content for foreign visitors</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- WHY KOREA -->
+  <section class="korea" id="korea">
+    <h2 class="korea__title">European eye.<br>Seoul access.</h2>
+    <div class="korea__body">
+      <p>A French creative, physically in South Korea. Korean brands get an international perspective without flying anyone in; international brands get local production, local light and a creator who lives the market she films.</p>
+      <ul class="korea__list">
+        <li>Korean brands targeting international audiences</li>
+        <li>International brands entering Korea</li>
+        <li>Hotels and clinics targeting foreign visitors</li>
+        <li>K-beauty brands producing English-language creative</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h2 class="section__title">About</h2>
+    <div class="about__cols">
+      <div class="about__text" id="aboutText"></div>
+      <aside class="proof" aria-label="Proof of real use">
+        <h3 class="proof__title">Already in my routine</h3>
+        <ul class="proof__list" id="proofList"></ul>
+        <p class="proof__note">Not a wishlist. I only pitch what I have bought again.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <h2 class="section__title">Services</h2>
+    <dl class="services__list" id="servicesList"></dl>
+    <p class="services__note">Usage rights and whitelisting quoted separately. Rate card within the day.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact__intro">
+      <h2 class="contact__title">Have something worth showing?</h2>
+      <p class="contact__sub">Let's make people stop scrolling.</p>
+      <div class="contact__links" id="contactLinks"></div>
+    </div>
+    <form class="form" id="inquiryForm" novalidate>
+      <div class="form__row">
+        <label>Name<input name="name" type="text" autocomplete="name" required></label>
+        <label>Company<input name="company" type="text" autocomplete="organization"></label>
+      </div>
+      <label>Email<input name="email" type="email" autocomplete="email" required></label>
+      <div class="form__row">
+        <label>Industry<input name="industry" type="text" placeholder="e.g. skincare, hotel, app"></label>
+        <label>Project type
+          <select name="project_type">
+            <option>UGC</option><option>Paid ads</option><option>Organic content</option><option>Hotel collaboration</option><option>Clinic / beauty</option><option>Tech / app</option><option>Other</option>
+          </select>
+        </label>
+      </div>
+      <div class="form__row">
+        <label>Timeline<input name="timeline" type="text" placeholder="e.g. launch in November"></label>
+        <label>Budget range <span class="form__opt">optional</span>
+          <select name="budget"><option value="">—</option><option>Under ₩1M / €700</option><option>₩1–3M / €700–2,000</option><option>₩3–8M / €2,000–5,500</option><option>Above</option></select>
+        </label>
+      </div>
+      <label>Message<textarea name="message" rows="4" required></textarea></label>
+      <button class="btn btn--primary" type="submit">Start a project</button>
+      <p class="form__status" id="formStatus" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <span id="footerName"></span>
+  <span>UGC & content production · Seoul, South Korea</span>
+  <a href="#top">Back to top</a>
+</footer>
+
+<!-- PROJECT MODAL -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel">
+    <button class="modal__close" data-close aria-label="Close project">Close</button>
+    <div class="modal__media" id="modalMedia"></div>
+    <div class="modal__case">
+      <p class="modal__brand" id="modalBrand"></p>
+      <h3 class="modal__title" id="modalTitle"></h3>
+      <ol class="case">
+        <li><span class="case__n">01</span><h4>Objective</h4><p id="caseObjective"></p></li>
+        <li><span class="case__n">02</span><h4>Format</h4><p id="caseFormat"></p></li>
+        <li><span class="case__n">03</span><h4>Deliverables</h4><ul id="caseDeliverables"></ul></li>
+        <li><span class="case__n">04</span><h4>Content</h4><p class="case__hint">Playing on the left — tap for sound.</p></li>
+      </ol>
+      <div class="modal__nav">
+        <button type="button" id="prevProject" class="btn btn--ghost">Previous</button>
+        <button type="button" id="nextProject" class="btn btn--ghost">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="data/site.js"></script>
+<script src="data/projects.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
