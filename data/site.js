@@ -6,8 +6,8 @@ window.SITE = {
   studio: "The Ordinary Process",
   email: "cloe@neira.fit",
   instagram: [
-    { label: "Instagram — fashion", handle: "@YOUR_FASHION_HANDLE", url: "https://instagram.com/YOUR_FASHION_HANDLE" },
-    { label: "Instagram — daily life", handle: "@YOUR_LIFE_HANDLE", url: "https://instagram.com/YOUR_LIFE_HANDLE" }
+    { label: "Instagram", handle: "@theordinaryprocess", url: "https://instagram.com/theordinaryprocess" },
+    { label: "Instagram — editorial & styling", handle: "@silbcloe", url: "https://instagram.com/silbcloe" }
   ],
   // Optional: a Formspree / Basin endpoint for the inquiry form. Leave "" to send by email instead.
   formEndpoint: "",
@@ -18,7 +18,7 @@ window.SITE = {
     positioning: "French creative based in South Korea. Campaign-ready video for tech, beauty, hospitality and lifestyle brands — shot with an editorial eye, delivered for social.",
     // Hero video: a short silent loop, 9:16 or 4:5, under 8 MB. Leave "" to show the poster only.
     video: "",
-    poster: "assets/posters/placeholder-hero.jpg"
+    poster: "assets/posters/profile.jpg"
   },
 
   // Real purchases shown in "Proof". Keep it honest — brands check.
