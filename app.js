@@ -68,7 +68,7 @@
     hm.innerHTML = `<video autoplay muted loop playsinline preload="metadata" poster="${esc(S.hero.poster)}" src="${esc(S.hero.video)}" aria-hidden="true"></video>`;
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) { const v = $("video", hm); v.removeAttribute("autoplay"); v.pause(); }
   } else {
-    hm.innerHTML = `<img src="${esc(S.hero.poster)}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',textContent:'Hero image or silent video loop — assets/posters/placeholder-hero.jpg'}))">`;
+    hm.innerHTML = `<img src="${esc(S.hero.poster)}" alt="${esc(S.name)}, portrait" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',textContent:'Hero image or silent video loop — assets/posters/placeholder-hero.jpg'}))">`;
   }
 
   /* ---------- Work grid + filters ---------- */

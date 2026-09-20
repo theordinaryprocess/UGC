@@ -60,7 +60,7 @@ main>section{padding:clamp(4rem,10vw,8rem) var(--gutter);max-width:var(--max);ma
 .hero__media{position:relative;aspect-ratio:4/5;background:var(--white);overflow:hidden;align-self:center;width:100%}
 .hero__media video,.hero__media img{width:100%;height:100%;object-fit:cover}
 .hero__media .placeholder{position:absolute;inset:0;display:grid;place-content:center;color:var(--mid);font-size:.9rem;text-align:center;padding:1rem;background:linear-gradient(160deg,#ECEBE6,#F6F5F1)}
-@media(min-width:800px){.hero{grid-template-columns:1.15fr .85fr;gap:4rem}.hero__media{aspect-ratio:9/16;max-height:80vh;justify-self:end;width:auto}}
+@media(min-width:800px){.hero{grid-template-columns:1.15fr .85fr;gap:4rem}.hero__media{aspect-ratio:4/5;max-height:80vh;justify-self:end;width:auto}}
 
 /* one orchestrated reveal on load */
 .reveal{opacity:0;transform:translateY(.4em);animation:rise .9s var(--ease) forwards}
