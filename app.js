@@ -35,13 +35,15 @@
       <video preload="none" playsinline webkit-playsinline poster="${esc(src.poster)}" aria-label="${esc(src.title)}"></video>
       <img class="player__poster" src="${esc(src.poster)}" alt="" loading="lazy" onerror="this.style.display='none'">
       <button class="player__btn" type="button" aria-label="Play ${esc(src.title)}"><span>Play</span></button>
-      <button class="player__sound" type="button" aria-pressed="false">Sound off</button>`;
+      <button class="player__sound" type="button" aria-pressed="true">Sound on</button>`;
     const v = $("video", el), btn = $(".player__btn", el), snd = $(".player__sound", el);
-    v.muted = true; v.loop = true;
+    v.muted = false; v.loop = true;
     const play = () => {
       if (current && current !== v) { current.pause(); current.closest(".player").classList.remove("is-playing"); }
       if (!v.src) v.src = src.video;
-      v.play().then(() => { current = v; el.classList.add("is-playing"); }).catch(() => {});
+      v.play().then(() => { current = v; el.classList.add("is-playing"); })
+        .catch(() => { v.muted = true; snd.textContent = "Sound off"; snd.setAttribute("aria-pressed", "false");
+                       v.play().then(() => { current = v; el.classList.add("is-playing"); }).catch(() => {}); });
     };
     btn.addEventListener("click", play);
     v.addEventListener("click", () => { v.paused ? play() : v.pause(); });
@@ -75,11 +77,35 @@
   const grid = $("#workGrid"), filters = $("#filters");
   filters.innerHTML = INDUSTRIES.map(([k, l], i) => `<button type="button" data-f="${k}" aria-pressed="${i === 0}">${l}</button>`).join("");
   grid.innerHTML = P.map((p, i) => `
-    <button type="button" class="tile${p.featured ? " tile--featured" : ""}" data-industry="${esc(p.industry)}" data-index="${i}" aria-label="Open project: ${esc(p.title)}, ${esc(p.brand)}">
-      <span class="tile__media"><img src="${esc(p.poster)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'"><span class="tile__play" aria-hidden="true">Play</span></span>
+    <button type="button" class="tile" data-industry="${esc(p.industry)}" data-index="${i}" aria-label="Open project: ${esc(p.title)}, ${esc(p.brand)}">
+      <span class="tile__media">
+        <video class="tile__video" muted loop playsinline webkit-playsinline preload="none" poster="${esc(p.poster)}" data-src="${esc(p.video)}" aria-hidden="true" tabindex="-1"></video>
+        <span class="tile__play" aria-hidden="true">Play</span>
+      </span>
       <span class="tile__meta"><span class="tile__brand">${esc(p.brand)}</span><span class="tile__type">${esc(p.type)}</span></span>
       <span class="tile__title">${esc(p.title)}</span>
     </button>`).join("");
+
+  /* Autoplay tiles, muted, only while comfortably in view. Pauses off-screen. */
+  const tileVideos = [...grid.querySelectorAll(".tile__video")];
+  const saveData = navigator.connection && navigator.connection.saveData;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if ("IntersectionObserver" in window && !saveData && !reduce) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        const v = en.target;
+        if (en.isIntersecting) {
+          if (!v.src) v.src = v.dataset.src;
+          v.play().then(() => v.closest(".tile__media").classList.add("is-live")).catch(() => {});
+        } else {
+          v.pause();
+          v.closest(".tile__media").classList.remove("is-live");
+        }
+      });
+    }, { threshold: 0.55 });
+    tileVideos.forEach(v => io.observe(v));
+  }
+
   filters.addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
     [...filters.children].forEach(x => x.setAttribute("aria-pressed", String(x === b)));
@@ -97,6 +123,7 @@
   function openProject(i) {
     idx = i; const p = P[i];
     stopAll();
+    grid.querySelectorAll(".tile__video").forEach(v => v.pause());
     media.innerHTML = ""; media.appendChild(createPlayer(p));
     $("#modalBrand").textContent = `${p.brand} · ${p.year}`;
     $("#modalTitle").textContent = p.title;
@@ -107,7 +134,9 @@
     $(".modal__close").focus();
     const btn = $(".player__btn", media); if (btn) btn.click();
   }
-  function closeModal() { stopAll(); media.innerHTML = ""; modal.hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+  function closeModal() { stopAll(); media.innerHTML = ""; modal.hidden = true; document.body.style.overflow = "";
+    grid.querySelectorAll(".tile__video").forEach(v => { if (v.src) v.play().catch(() => {}); });
+    if (lastFocus) lastFocus.focus(); }
   function step(d) { const v = visibleIndexes(); const pos = v.indexOf(idx); openProject(v[(pos + d + v.length) % v.length]); }
   grid.addEventListener("click", e => { const t = e.target.closest(".tile"); if (t) openProject(+t.dataset.index); });
   modal.addEventListener("click", e => { if (e.target.closest("[data-close]")) closeModal(); });
